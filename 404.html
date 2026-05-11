@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr_DZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Aanaya</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+    <style>
+        :root {
+            --bg-primary: #FFFFFF;
+            --text-primary: #1D1D1F;
+            --text-secondary: #6E6E73;
+            --bg-tertiary: #E8E8ED;
+            --accent: #3D6B3D;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            width: 100%; height: 100vh;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: clamp(64px, 10vw, 120px);
+            font-weight: normal;
+            color: var(--bg-tertiary);
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+        p {
+            font-size: 17px;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+        a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 980px;
+            border: 1.5px solid rgba(0,0,0,0.1);
+            transition: background 0.2s, border-color 0.2s;
+        }
+        a:hover {
+            border-color: var(--text-primary);
+        }
+        .hidden-lang { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="logo">
+        <span class="lang-fr">Aanaya</span>
+        <span class="lang-en hidden-lang">Aanaya</span>
+        <span class="lang-ar hidden-lang">أناية</span>
+    </div>
+    
+    <h1>404</h1>
+    
+    <p>
+        <span class="lang-fr">Cette page n'existe pas.</span>
+        <span class="lang-en hidden-lang">This page doesn't exist.</span>
+        <span class="lang-ar hidden-lang">هذه الصفحة غير موجودة.</span>
+    </p>
+
+    <a href="/">
+        <span class="lang-fr">← Retour à l'accueil</span>
+        <span class="lang-en hidden-lang">← Back to home</span>
+        <span class="lang-ar hidden-lang">العودة إلى الرئيسية →</span>
+    </a>
+
+    <script>
+        // Retrieve the language preference saved from the main site
+        const lang = localStorage.getItem('preferredLang') || 'fr';
+        
+        // Respect the language settings and RTL direction
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        
+        // Show only the correct language strings
+        document.querySelectorAll('.lang-fr, .lang-en, .lang-ar').forEach(el => el.classList.add('hidden-lang'));
+        document.querySelectorAll(`.lang-${lang}`).forEach(el => el.classList.remove('hidden-lang'));
+    </script>
+</body>
+</html>
